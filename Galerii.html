@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellam OÜ</title>
+<style>
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.logo-image {
+    width: 60px;
+    height: 60px;
+    margin-right: 1rem;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-icon div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.gallery-content {
+    padding: 1rem;
+}
+
+.gallery-content h3 {
+    margin-top: 0;
+    color: var(--secondary-color);
+}
+
+.gallery-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.gallery-link:hover {
+    background-color: #2980b9;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contact-info, .social-icons {
+    flex: 1;
+    min-width: 300px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    
+    margin: auto;
+    display: block;
+    width: 80%;
+
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.back-to-home {
+    display: block;
+    width: 200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-home:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--secondary-color);
+        padding: 1rem;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    .menu-icon.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-icon.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-icon.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+</style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <div class="logo-image">
+                <img src="logo.png" alt="Ellam Logo" width="60" height="55">
+            </div>
+            <h1 class="logo-text">Ellam OÜ</h1>
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="gallery-header">
+            <h1>Galerii</h1>
+            <p>Tutvuge meie mitmekülgse projektide portfelliga. Iga projekt tähistab meie pühendumust kõrgele kvaliteedile ja meie võimet pakkuda tipptasemel lahendusi.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="betoonfassaad.jpg" alt="Betoonfassaadi vuugid" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Betoonfassaadi vuugid</h3>
+                    <p> 	
+                    Puhastame vuugi ääred, paigaldame vuuginööri ja vuugimastiksi. Vastavalt betoonelementidele valime sobiva värvitooni. Kõidele töödele garantii!</p>
+                    <button class="gallery-link" onclick="openModal('betoonfassaad.jpg')">Lähemalt</button>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="klaasfassaad.jpg" alt="Klaasfassaadi vuugid" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Klaasfassaadi vuugid</h3>
+                    <p>Klaasfassaadide hermetiseerimine annab hea vee- ja kuumapidavuse. Klaaspakettide vaheline vuuk jääb ühtlane. Kasutame vastupidavaid materjale!</p>
+                    <button class="gallery-link" onclick="openModal('klaasfassaad.jpg')">Lähemalt</button>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="akende.jpg" alt="Akende vuugid" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Akende vuugid</h3>
+                    <p>Akende hermetiseerimine vähendab niiskuse teket siseruumidesse ja vähendab müra taset. Samuti suureneb akende soojapidavus. Valige sobiv materjali värv!</p>
+                    <button class="gallery-link" onclick="openModal('akende.jpg')">Lähemalt</button>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="remont.jpg" alt="Vuukide remont" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Vuukide remont</h3>
+                    <p>Remondime vanade paneelelamute vuugid. Puhastame vanad vuugid ja täidame need uue vuugi mastiksiga. Vuukide renoveerimine tänapäevaste materjalidega!</p>
+                    <button class="gallery-link" onclick="openModal('remont.jpg')">Lähemalt</button>
+                </div>
+    </div>
+    <a href="index.html" class="back-to-home">Tagasi</a>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">×</span>
+        <img class="modal-content" id="modalImage" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+    </div>
+
+    <footer>
+        <div class="contact-info">
+            <h3>Kontakt</h3>
+            <p>Email: villu@ellam.ee</p>
+            <p>Telefon: +372 55650453</p>
+            <p>Aadress: Tallinn, Wismari 38-5, 10136</p>
+        </div>
+        <div class="social-icons">
+            <a href="https://facebook.com/innovatetech" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/innovatetech" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/company/innovatetech" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://instagram.com/innovatetech" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+    function toggleMenu() {
+        var menu = document.getElementById("navMenu");
+        var icon = document.querySelector(".menu-icon");
+        menu.classList.toggle("active");
+        icon.classList.toggle("active");
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        galleryItems.forEach(item => observer.observe(item));
+    });
+
+    window.addEventListener('resize', function() {
+        var menu = document.getElementById("navMenu");
+        if (window.innerWidth > 768) {
+            menu.classList.remove("active");
+        }
+    });
+
+    function openModal(imageSrc) {
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = imageSrc;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+</body></html>
