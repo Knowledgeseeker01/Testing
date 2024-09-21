@@ -7,20 +7,20 @@
 :root {
     --primary-color: #1a5f7a;
     --secondary-color: #333333;
-    --accent-color: #ffa500;
+    --accent-color: #333333;
     --bg-color: #f5f5f5;
     --text-color: #333333;
     --card-bg: #797c7e;
-    --footer-bg: #797c7e;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
+    padding-top: 80px;
 }
 
 header {
@@ -37,7 +37,6 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-
 .logo-container {
     display: flex;
     align-items: center;
@@ -56,164 +55,45 @@ header {
     object-fit: contain;
 }
 .container {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-    padding-top: 100px;
-}
-
-.section-title {
-    color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 2rem;
     text-align: center;
-}
-
-.contact-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 2rem;
-}
-
-.contact-form, .contact-info {
-    width: 48%;
-}
-
-.contact-form form {
-    background-color: var(--bg-color);
-    padding: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: var(--secondary-color);
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-.form-group textarea {
-    height: 150px;
-    resize: vertical;
-}
-
-.button-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 1rem;
-}
-
-.submit-btn, .back-btn {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 3px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    white-space: nowrap;
-    flex: 1;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.submit-btn {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.submit-btn:hover {
-    background-color: #14485d;
-}
-
-.back-btn {
-    background-color: var(--secondary-color);
-    color: white;
-}
-
-.back-btn:hover {
-    background-color: #222222;
 }
 
 .contact-info {
     background-color: var(--bg-color);
-    padding: 2rem;
-    border-radius: 5px;
+    border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-top: 2rem;
+    animation: fadeIn 0.5s ease-out forwards;
 }
 
-.contact-info h3 {
+.contact-info h2 {
     color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .contact-info p {
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
+    margin-bottom: 0.5rem;
 }
 
-.contact-info i {
-    margin-right: 10px;
-    color: var(--primary-color);
-}
-
-.social-icons {
-    margin-top: 1.5rem;
-}
-
-.social-icons a {
-    color: var(--secondary-color);
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-    color: var(--primary-color);
-}
-
-footer {
-    background-color: var(--footer-bg);
+.back-button {
+    display: inline-block;
+    background-color: var(--accent-color);
     color: white;
-    padding: 2rem 1rem;
-    text-align: center;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 50px;
     margin-top: 2rem;
-}
-.contact-form, .contact-info, .map-container {
-    animation: fadeIn 0.5s ease-out forwards;
-    opacity: 0;
+    transition: background-color 0.3s ease;
 }
 
-.contact-form { animation-delay: 0.1s; }
-.contact-info { animation-delay: 0.2s; }
-.map-container { animation-delay: 0.3s; }
-
+.back-button:hover {
+    background-color: #c0392b;
+}
 </style>
 </head>
 <body>
@@ -226,57 +106,23 @@ footer {
     </header>
 
     <div class="container">
-        <h2 class="section-title">Kontakt</h2>
-        <div class="contact-content">
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Täisnimi:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Emaili aadress:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefoni number:</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Sõnum:</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <div class="button-group">
-                        <button type="submit" class="submit-btn">Saada</button>
-                        <a href="index.html" class="back-btn">Tagasi</a>
-                    </div>
-                </form>
-            </div>
-            <div class="contact-info">
-                <h3>Kontakt</h3>
-                <p>Email: villu@ellam.ee</p>
-                <p>Telefon: +372 55650453</p>
-                <p>Aadress: Tallinn, Wismari 38-5, 10136</p>
-                <div class="social-icons">
-                    <a href="https://linkedin.com/company/innovatetech" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com/innovatetech" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://facebook.com/innovatetech" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                </div>
-            </div>
+        <div class="contact-info">
+            <h3>Kontakt</h3>
+            <p>Email: villu@ellam.ee</p>
+            <p>Telefon: +372 55650453</p>
+            <p>Aadress: Tallinn, Wismari 38-5, 10136</p>
         </div>
-        <div class="map-container" id="map"></div>
+        <a href="index.html" class="back-button">Tagasi</a>
     </div>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('contactForm');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message. Our team will contact you shortly.');
-            form.reset();
-        });
+    function toggleMenu() {
+        var menu = document.getElementById("navMenu");
+        menu.classList.toggle("active");
+    }
 
-        // Animation
-        const animatedElements = document.querySelectorAll('.contact-form, .contact-info');
+    document.addEventListener('DOMContentLoaded', function() {
+        const animatedElements = document.querySelectorAll('.contact-info');
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -288,5 +134,5 @@ footer {
 
         animatedElements.forEach(el => observer.observe(el));
     });
-    </script>
+    </script>   
 </body></html>
