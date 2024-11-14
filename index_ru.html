@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellam OÜ</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #797c7e;
+            --accent-color: #e74c3c;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --strength-bg: #e8f4fd;
+            --footer-bg: #797c7e;
+            --about-bg: #ecf0f1;
+            --gallery-bg: #f1c40f;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logo-image {
+    width: 278px;
+    height: 55px;
+    margin-left: -35px;
+}
+.evul-image {
+    margin-left: 15px;
+}
+.logo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+        .language-selector{
+            display: flex;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px;
+            gap: 15px
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .hero {
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .services-strengths {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .services, .strengths {
+            width: 48%;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .strength-card {
+            background-color: var(--strength-bg);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        .cta-button, .gallery-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .cta-button:hover, .gallery-button:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        .gallery-button {
+            background-color: var(--gallery-bg);
+            color: var(--secondary-color);
+            display: block;
+            width: 300px;
+            margin: 2rem auto;
+        }
+
+        .gallery-button:hover {
+            background-color: #f39c12;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .about-us {
+            background-color: var(--about-bg);
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-us h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-us p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info h3 {
+            color: rgba(20, 20, 20);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .services, .strengths {
+                width: 100%;
+            }
+
+            .hero {
+                height: 300px;
+                margin-top: 100px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                transform: scale(1.5);
+            }
+
+            .menu-icon {
+                display: block;
+            }
+            .gallery-button {
+                width: 80%;
+            }
+
+            .logo-image {
+                width: 278px;
+                height: 55px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .hero-image {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card, .about-us, .gallery-button {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .about-us { animation-delay: 0.4s; }
+        .gallery-button { animation-delay: 0.5s; }
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <div class="logo-image">
+                <img src="Elogo2xfixedscaledv2.png" alt="Ellam OÜ" width="557" height="110">
+            </div>
+        </a>
+        <div class="evul-image">
+        <div id="ssb-evul-stamp"></div>
+        <script type="text/javascript">
+            (({ feature, token, element, options }) => {
+                if (!document.getElementById('ssb.pistik.dns-prefetch')) {
+                    const link = document.createElement('link');
+                    link.id = 'ssb.pistik.dns-prefetch';
+                    link.href = 'https://pistik.ssb.ee';
+                    link.rel = 'dns-prefetch';
+
+                    document.head.appendChild(link);
+                }
+
+                if (!document.getElementById('ssb.pistik.loader')) {
+                    const script = document.createElement('script');
+                    script.id = 'ssb.pistik.loader';
+                    script.type = 'text/javascript';
+                    script.src = 'https://pistik.ssb.ee/app/public/js/main.js';
+
+                    document.head.appendChild(script);
+                }
+                
+                document.addEventListener('ssb.pistik.loader.ready', (event) => {
+                    document.dispatchEvent(new CustomEvent('ssb.pistik.loader.load', { 
+                        detail: { feature, token, element, options }
+                    }));
+                }, { once: true });
+
+                document.currentScript.remove();
+            })({
+                feature: 'evul-stamp',
+                element: document.getElementById('ssb-evul-stamp'),
+                options: {
+                    // Add options here as <key: value> pairs
+                    reg_code: '11976170',
+                    colour: '#000000'
+                },
+            });
+        </script>
+        <div>
+    </header>
+
+    <div class="hero">
+        <img src="Background.jpg" alt="Фоновое изображение" class="hero-image" width="575" height="380">
+        <div class="hero-content">
+            <h2>Герметизация и ремонт швов</h2>
+            <a href="#kontakt" class="cta-button">Свяжитесь с нами</a>
+        </div>
+    </div>
+    <div class="language-selector">
+        <a href="index_fi.html">
+            <img src="fi.png" alt="Suomi" title="Suomi" width="50" height="37">
+        </a>
+        <a href="index_en.html">
+            <img src="en.png" alt="English" title="English" width="50" height="37">
+            <a href="index.html">
+                <img src="et.png" alt="Eesti keel" title="Eesti keel" width="50" height="37">
+            </a>
+        </a>
+    </div>
+    <div class="container">
+        <div class="services-strengths">
+            <div class="services">
+                <h2 class="section-title">Услуги</h2>
+                <div class="card">
+                    <h3>Герметизация</h3>
+                    <p>Герметизация швов бетонных, каменных, шлакоблочных, стеклянных фасадов, окон и оконных рам.</p>
+                </div>
+                <div class="card">
+                    <h3>Ремонт</h3>
+                    <p>Ремонт швов в новых и старых зданиях.</p>
+                </div>
+                <div class="card">
+                    <h3>Дополнительные работы</h3>
+                    <p>Силиконизация и акриловые работы внутри помещений. Установка противопожарных проходок.</p>
+                </div>
+            </div>
+    
+            <div class="strengths">
+                <h2 class="section-title">Почему выбирают нас?</h2>
+                <div class="card strength-card">
+                    <h3>Долгосрочный опыт</h3>
+                    <p>Ellam OÜ работает много лет, начав свою деятельность в 2010 году.</p>
+                </div>
+                <div class="card strength-card">
+                    <h3>Качественная и быстрая работа</h3>
+                    <p>Мы выполняем работы быстро, качественно, по доступным ценам и даём гарантию на все работы.</p>
+                </div>
+                <div class="card strength-card">
+                    <h3>Сильная команда и качественные материалы</h3>
+                    <p>Наши сотрудники с многолетним опытом всегда находят решение для любых проблем с герметизацией швов. Мы используем только лучшие материалы и обладаем всеми необходимыми сертификатами.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="about-us">
+            <h2 class="section-title">О компании</h2>
+            <p>Ellam OÜ предлагает качественные и доступные решения для герметизации швов. Ассортимент услуг включает ремонт и герметизацию различных швов.</p>
+            <p>Мы работаем быстро, качественно и по разумным ценам. Используем герметизирующие материалы и уплотнители известных производителей, таких как Bostik, Sika и Tremco, что гарантирует долговечность и надёжность выполненных работ. Все наши материалы имеют необходимые сертификаты.</p>
+            <p>Команда Ellam OÜ состоит из опытных сотрудников, прошедших обучение и имеющих богатый опыт работы как в Эстонии, так и за рубежом. Наши специалисты прошли специальное обучение, позволяющее профессионально выполнять различные работы по герметизации швов и стыков.</p>
+            <p>Удовлетворённость клиента — наш приоритет, поэтому мы предоставляем гарантию на все работы. Кроме того, мы предлагаем бесплатный осмотр объекта и составление предложения!</p>
+            <p>Выбирая Ellam OÜ, вы выбираете уверенность в том, что работы по герметизации швов будут выполнены правильно и вовремя.</p>
+        </div>
+    
+        <a href="Galerii_ru.html" class="gallery-button">
+            <i class="fas fa-images"></i> Галерея
+        </a>
+    </div>
+    
+    <footer id="kontakt">
+        <div class="contact-info">
+            <h3>Контакт</h3>
+            <p>Email: villu@ellam.ee</p>
+            <p>Телефон: +372 55650453</p>
+            <p>Адрес: Таллинн, Wismari 38-5, 10136</p>
+        </div>
+    </footer>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.card');
+        const aboutUs = document.querySelector('.about-us');
+        const galleryButton = document.querySelector('.gallery-button');
+        
+        cards.forEach(card => {
+            card.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+    
+        cards.forEach(card => observer.observe(card));
+        observer.observe(aboutUs);
+        observer.observe(galleryButton);
+    });
+    
+    window.addEventListener('resize', function() {
+        var heroImage = document.querySelector('.hero-image');
+        if (window.innerWidth <= 768) {
+            heroImage.style.transform = 'scale(1.5)';
+        } else {
+            heroImage.style.transform = 'scale(1)';
+        }
+    });
+    </script>     
+</body>
+</html>
+

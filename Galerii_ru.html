@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellam OÜ</title>
+<style>
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #797c7e;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+.logo-image {
+    width: 278px;
+    height: 55px;
+    margin-left: -20px;
+}
+
+.logo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.gallery-content {
+    padding: 1rem;
+}
+
+.gallery-content h3 {
+    margin-top: 0;
+    color: var(--secondary-color);
+}
+
+.gallery-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.gallery-link:hover {
+    background-color: #2980b9;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 2rem;
+}
+
+.contact-info{
+    flex: 1;
+    min-width: 300px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.back-to-home {
+    display: block;
+    width: 200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-home:hover {
+    background-color: #2980b9;
+}
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--secondary-color);
+        padding: 1rem;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <div class="logo-image">
+                <img src="Elogo2xfixed.png" alt="Ellam OÜ" width="557" height="110">
+            </div>
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="gallery-header">
+            <h1>Галерея</h1>
+            <p>Ознакомьтесь с нашей галереей, которая подтверждает нашу неизменную приверженность высоким стандартам качества и способность предлагать лучшие решения.</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="betoonfassaad.jpg" alt="Шов бетонного фасада" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Швы бетонного фасада</h3>
+                    <p>Шов играет важную роль в компенсации естественных движений бетона, таких как расширение и сжатие, уменьшая риск трещин и повреждений. Он также служит защитным барьером, предотвращая проникновение влаги и грязи в соединительные стыки, что помогает сохранить качество фасада и продлить его долговечность в суровых условиях окружающей среды.</p>
+                    <button class="gallery-link" onclick="openModal('betoonfassaad.jpg')">Подробнее</button>
+                </div>
+            </div>
+        
+            <div class="gallery-item">
+                <img src="toruvuuk.jpg" alt="Шов элемента" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Швы вокруг элементов</h3>
+                    <p>Швы вокруг элементов, таких как трубы, улучшают общий эстетический вид, создавая визуально более чистое и единое впечатление. Кроме того, они обеспечивают лучшую герметичность, что помогает избежать утечек или скопления пыли в труднодоступных местах.</p>
+                    <button class="gallery-link" onclick="openModal('toruvuuk.jpg')">Подробнее</button>
+                </div>
+            </div>
+        
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="põrandavuuk.jpg" alt="Шов бетонного пола" class="gallery-image" width="300" height="200">
+                    <div class="gallery-content">
+                        <h3>Швы между бетонными полами</h3>
+                        <p>Швы между бетонными полами соединяют элементы в единое целое. Они играют важную роль в компенсации расширения и сжатия бетона, снижая риск появления трещин. Кроме того, швы выполняют защитную функцию, препятствуя проникновению влаги и грязи в соединительные стыки, что помогает продлить долговечность пола и сохранить его качество.</p>
+                        <button class="gallery-link" onclick="openModal('põrandavuuk.jpg')">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="gallery-item">
+                <img src="akende.jpg" alt="Швы окон" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Швы окон</h3>
+                    <p>Герметизация окон уменьшает образование влаги в помещениях и снижает уровень шума. Кроме того, повышается теплоизоляция окон. Выберите подходящий цвет материала!</p>
+                    <button class="gallery-link" onclick="openModal('akende.jpg')">Подробнее</button>
+                </div>
+            </div>
+        
+            <div class="gallery-item">
+                <img src="remont.jpg" alt="Ремонт швов" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Ремонт швов</h3>
+                    <p>Мы ремонтируем швы старых панельных домов. Очищаем старые швы и заполняем их новым герметиком. Реновация швов с использованием современных материалов!</p>
+                    <button class="gallery-link" onclick="openModal('remont.jpg')">Подробнее</button>
+                </div>
+            </div>
+        
+            <div class="gallery-item">
+                <img src="klaasfassaad.jpg" alt="Швы стеклянного фасада" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Швы стеклянного фасада</h3>
+                    <p>Герметизация стеклянных фасадов обеспечивает отличную водо- и термостойкость. Шов между стеклопакетами получается ровным. Мы используем только долговечные материалы!</p>
+                    <button class="gallery-link" onclick="openModal('klaasfassaad.jpg')">Подробнее</button>
+                </div>
+            </div>
+        </div>
+        
+        <a href="index_ru.html" class="back-to-home">Назад</a>
+        
+        <div id="imageModal" class="modal">
+            <span class="close" onclick="closeModal()">×</span>
+            <img class="modal-content" id="modalImage" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+        </div>
+        
+        <footer>
+            <div class="contact-info">
+                <h3>Контакты</h3>
+                <p>Email: villu@ellam.ee</p>
+                <p>Телефон: +372 55650453</p>
+                <p>Адрес: Таллинн, Висмари 38-5, 10136</p>
+            </div>
+        </footer>
+       <script>
+    function toggleMenu() {
+        var menu = document.getElementById("navMenu");
+        var icon = document.querySelector(".menu-icon");
+        menu.classList.toggle("active");
+        icon.classList.toggle("active");
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        galleryItems.forEach(item => observer.observe(item));
+    });
+
+    window.addEventListener('resize', function() {
+        var menu = document.getElementById("navMenu");
+        if (window.innerWidth > 768) {
+            menu.classList.remove("active");
+        }
+    });
+
+    function openModal(imageSrc) {
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = imageSrc;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+</body></html>

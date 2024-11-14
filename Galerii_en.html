@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellam OÜ</title>
+<style>
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #797c7e;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+.logo-image {
+    width: 278px;
+    height: 55px;
+    margin-left: -20px;
+}
+
+.logo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.gallery-content {
+    padding: 1rem;
+}
+
+.gallery-content h3 {
+    margin-top: 0;
+    color: var(--secondary-color);
+}
+
+.gallery-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.gallery-link:hover {
+    background-color: #2980b9;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 2rem;
+}
+
+.contact-info{
+    flex: 1;
+    min-width: 300px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.back-to-home {
+    display: block;
+    width: 200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-home:hover {
+    background-color: #2980b9;
+}
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--secondary-color);
+        padding: 1rem;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <div class="logo-image">
+                <img src="Elogo2xfixed.png" alt="Ellam OÜ" width="557" height="110">
+            </div>
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="gallery-header">
+            <h1>Gallery</h1>
+            <p>Explore our gallery, showcasing our consistent commitment to the highest quality standards and ability to deliver the best solutions.</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="betoonfassaad.jpg" alt="Concrete facade joint" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Concrete Facade Joints</h3>
+                    <p>The joint plays a critical role in balancing the natural movements of concrete, such as expansion and contraction, reducing the risk of cracks and damage. It also acts as a protective barrier, preventing moisture and dirt from penetrating the connections, thus maintaining the facade's quality and extending its durability under harsh conditions.</p>
+                    <button class="gallery-link" onclick="openModal('betoonfassaad.jpg')">Learn More</button>
+                </div>
+            </div>
+        
+            <div class="gallery-item">
+                <img src="toruvuuk.jpg" alt="Element joint" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Element Surrounding Joints</h3>
+                    <p>A joint around an element, such as a pipe, enhances overall aesthetics by creating a cleaner and more uniform appearance. Additionally, it offers practical benefits by providing better sealing, preventing leaks or dust accumulation in hard-to-reach places.</p>
+                    <button class="gallery-link" onclick="openModal('toruvuuk.jpg')">Learn More</button>
+                </div>
+            </div>
+        
+            <div class="gallery-item">
+                <img src="põrandavuuk.jpg" alt="Concrete floor joint" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Concrete Floor Joints</h3>
+                    <p>Concrete floor joints visually unify the elements into a cohesive whole. They play a crucial role in compensating for the expansion and contraction of concrete, reducing the risk of cracks. Moreover, they act as a protective barrier, preventing moisture and dirt from entering the connections, which helps extend the floor's durability and maintain its quality.</p>
+                    <button class="gallery-link" onclick="openModal('põrandavuuk.jpg')">Learn More</button>
+                </div>
+            </div>
+        
+            <div class="gallery-item">
+                <img src="akende.jpg" alt="Window joints" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Window Joints</h3>
+                    <p>Sealing windows reduces indoor moisture and noise levels while improving window insulation. Choose the color of the material that best suits your needs!</p>
+                    <button class="gallery-link" onclick="openModal('akende.jpg')">Learn More</button>
+                </div>
+            </div>
+        
+            <div class="gallery-item">
+                <img src="remont.jpg" alt="Joint repair" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Joint Repairs</h3>
+                    <p>We repair joints in old panel buildings by cleaning out old joints and filling them with new sealant. Renovate your joints with modern materials!</p>
+                    <button class="gallery-link" onclick="openModal('remont.jpg')">Learn More</button>
+                </div>
+            </div>
+        
+            <div class="gallery-item">
+                <img src="klaasfassaad.jpg" alt="Glass facade joints" class="gallery-image" width="300" height="200">
+                <div class="gallery-content">
+                    <h3>Glass Facade Joints</h3>
+                    <p>Sealing glass facades ensures excellent water and heat resistance. The joints between glass panels remain even. We use durable materials!</p>
+                    <button class="gallery-link" onclick="openModal('klaasfassaad.jpg')">Learn More</button>
+                </div>
+            </div>
+        </div>
+        
+        <a href="index_en.html" class="back-to-home">Back</a>
+        
+        <div id="imageModal" class="modal">
+            <span class="close" onclick="closeModal()">×</span>
+            <img class="modal-content" id="modalImage" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+        </div>
+        
+        <footer>
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <p>Email: villu@ellam.ee</p>
+                <p>Phone: +372 55650453</p>
+                <p>Address: Tallinn, Wismari 38-5, 10136</p>
+            </div>
+        </footer>        
+    <script>
+    function toggleMenu() {
+        var menu = document.getElementById("navMenu");
+        var icon = document.querySelector(".menu-icon");
+        menu.classList.toggle("active");
+        icon.classList.toggle("active");
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        galleryItems.forEach(item => observer.observe(item));
+    });
+
+    window.addEventListener('resize', function() {
+        var menu = document.getElementById("navMenu");
+        if (window.innerWidth > 768) {
+            menu.classList.remove("active");
+        }
+    });
+
+    function openModal(imageSrc) {
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = imageSrc;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+</body></html>
